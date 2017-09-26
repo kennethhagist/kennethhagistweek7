@@ -1,0 +1,39 @@
+>>> User.objects.create(first_name="Ken", last_name="Griffey Jr", email_address=
+"ken@thekid.com", age=24)
+<User: ken@thekid.com>
+
+>>> User.objects.create(first_name="Jay", last_name="Buhner", email_address="jay
+@thebone.com", age=19)
+<User: jay@thebone.com>
+
+>>> User.objects.all()
+<QuerySet [<User: ken@thekid.com>, <User: jay@thebone.com>]>
+
+>>> User.objects.first()
+<User: ken@thekid.com>
+
+>>> User.objects.last()
+<User: jay@thebone.com>
+
+>>> User.objects.all().order_by("last_name")
+<QuerySet [<User: jay@thebone.com>, <User: ken@thekid.com>]>
+
+>>> user2 = User.objects.get(id=2)
+>>> user2.last_name = "Bone"
+>>> user2.save()
+
+>>> User.objects.last()
+<User: jay@thebone.com>
+
+>>> User.objects.create(first_name="Edgar", last_name="Martinez", email_address=
+"Edgar@papi.com", age=39)
+<User: Edgar@papi.com>
+
+>>> User.objects.all()
+<QuerySet [<User: ken@thekid.com>, <User: jay@thebone.com>, <User: Edgar@papi.com>]>
+
+>>> User.objects.get(id=3).delete()
+(1, {u'user_login.User': 1})
+
+>>> User.objects.all()
+<QuerySet [<User: ken@thekid.com>, <User: jay@thebone.com>]>

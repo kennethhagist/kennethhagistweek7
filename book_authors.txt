@@ -1,0 +1,180 @@
+>>> from apps.book_authors.models import Book
+
+>>> from apps.book_authors.models import Author
+
+4.1
+>>> Book.objects.create(name="C Sharp", desc="C Sharp")
+<Book: Book object>
+
+>>> Book.objects.create(name="Java", desc="Java")
+<Book: Book object>
+
+>>> Book.objects.create(name="Python", desc="Python")
+<Book: Book object>
+
+>>> Book.objects.create(name="PHP", desc="PHP")
+<Book: Book object>
+
+>>> Book.objects.create(name="Ruby", desc="Ruby")
+<Book: Book object>
+
+4.2
+>>> Author.objects.create(first_name="Mike", last_name="Mike", email=" ")
+<Author: Author object>
+
+>>> Author.objects.create(first_name="Speros", last_name="Speros")
+<Author: Author object>
+
+>>> Author.objects.create(first_name="John", last_name="John")
+<Author: Author object>
+
+>>> Author.objects.create(first_name="Jadee", last_name="Jadee")
+<Author: Author object>
+
+>>> Author.objects.create(first_name="Jay", last_name="Jay")
+<Author: Author object>
+
+2.1
+>>> Book.objects.first().authors
+<django.db.models.fields.related_descriptors.ManyRelatedManager object at 0x0000
+000003977908>
+
+2.2
+>>> Author.objects.first().books
+<django.db.models.fields.related_descriptors.ManyRelatedManager object at 0x0000
+000003977CF8>
+
+2.1
+>>> Book.objects.first().authors.values()
+<QuerySet []>
+
+2.2
+>>> Author.objects.first().books.values()
+<QuerySet []>
+
+4.4
+>>> Ruby = Book.objects.get(id=5)
+>>> Ruby.name = "C#"
+>>> Ruby.save()
+
+4.5
+>>> Jay = Author.objects.get(id=5)
+>>> Jay.first_name = "Ketul"
+>>> Jay.save()
+
+
+>>> sharp = Book.objects.get(id=1)
+>>> sharp.name
+u'C Sharp'
+
+>>> Java = Book.objects.get(id=2)
+>>> Java.name
+u'Java'
+
+>>> python = Book.objects.get(id=3)
+>>> python.name
+u'Python'
+
+>>> PHP = Book.objects.get(id=4)
+>>> PHP.name
+u'PHP'
+
+>>> Ruby = Book.objects.get(id=5)
+>>> Ruby.name
+u'C#'
+
+>>> mike = Author.objects.get(id=1)
+>>> mike.first_name
+u'Mike'
+
+>>> speros = Author.objects.get(id=2)
+>>> speros.first_name
+u'Speros'
+
+>>> John = Author.objects.get(id=3)
+>>> John.first_name
+u'John'
+
+>>> Jadee = Author.objects.get(id=4)
+>>> Jadee.first_name
+u'Jadee'
+
+>>> Ketul = Author.objects.get(id=5)
+>>> Ketul.first_name
+u'Ketul'
+
+4.6
+>>> mike.books.add(sharp)
+>>> mike.books.add(Java)
+
+4.7
+>>> speros.books.add(sharp)
+>>> speros.books.add(Java)
+>>> speros.books.add(python)
+
+4.8
+>>> John.books.add(sharp)
+>>> John.books.add(Java)
+>>> John.books.add(python)
+>>> John.books.add(PHP)
+
+4.9
+>>> Jadee.books.add(sharp)
+>>> Jadee.books.add(Java)
+>>> Jadee.books.add(python)
+>>> Jadee.books.add(PHP)
+>>> Jadee.books.add(Ruby)
+
+4.10
+>>> python.authors.all()
+<QuerySet [<Author: Author object>, <Author: Author object>, <Author: Author obj
+ect>]>
+
+>>> python.authors.all().values()
+<QuerySet [{'first_name': u'John', 'last_name': u'John', 'created_at': datetime.
+datetime(2017, 8, 18, 5, 43, 43, 321000, tzinfo=<UTC>), 'updated_at': datetime.d
+atetime(2017, 8, 18, 6, 3, 23, 719000, tzinfo=<UTC>), 'email': u'', 'notes': u''
+, u'id': 3}, {'first_name': u'Speros', 'last_name': u'Speros', 'created_at': dat
+etime.datetime(2017, 8, 18, 5, 43, 18, 492000, tzinfo=<UTC>), 'updated_at': date
+time.datetime(2017, 8, 18, 6, 1, 24, 248000, tzinfo=<UTC>), 'email': u'', 'notes
+': u'', u'id': 2}, {'first_name': u'Jadee', 'last_name': u'Jadee', 'created_at':
+ datetime.datetime(2017, 8, 18, 5, 45, 9, 615000, tzinfo=<UTC>), 'updated_at': d
+atetime.datetime(2017, 8, 18, 6, 13, 47, 732000, tzinfo=<UTC>), 'email': u'', 'n
+otes': u'', u'id': 4}]>
+
+>>> for author in python.authors.all(): print author.first_name
+...
+John
+Speros
+Jadee
+
+4.11
+>>> speros.books.remove(python)
+
+4.12
+>>> Ketul.books.add(Java)
+
+4.13
+>>> for book in John.books.all(): print book.name
+...
+C Sharp
+Java
+Python
+PHP
+
+4.14
+>>> for book in speros.books.all(): print book.name
+...
+C Sharp
+Java
+Python
+
+2.1
+>>> Book.objects.first().authors
+<django.db.models.fields.related_descriptors.ManyRelatedManager object at 0x0000
+0000039F97B8>
+
+2.2
+>>> Author.objects.first().books
+<django.db.models.fields.related_descriptors.ManyRelatedManager object at 0x0000
+0000039F7EB8>

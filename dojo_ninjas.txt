@@ -1,0 +1,140 @@
+>>> from apps.dojo_ninjas.models import Dojo
+
+>>> Dojo.objects.create(name="CodingDojo Silcon Valley", city="Mountain View", state="CA")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object>, <Dojo: Dojo object>, <Dojo: Dojo object>]>
+
+>>> Dojo.objects.get(id=1).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+
+>>> Dojo.objects.get(id=2).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+
+>>> Dojo.objects.get(id=3).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+
+>>> Dojo.objects.create(name="CodingDojo Silcon Valley", city="Mountain View", state="CA")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: Dojo object>
+
+>>> Dojo.objects.all().values()
+<QuerySet [{'city': u'Mountain View', 'name': u'CodingDojo Silcon Valley', 'crea
+ted_at': datetime.datetime(2017, 8, 17, 5, 33, 51, 934000, tzinfo=<UTC>), 'updat
+ed_at': datetime.datetime(2017, 8, 17, 5, 33, 51, 934000, tzinfo=<UTC>), 'state'
+: u'CA', u'id': 4}, 
+
+{'city': u'Seattle', 'name': u'CodingDojo Seattle', 'created
+_at': datetime.datetime(2017, 8, 17, 5, 33, 56, 153000, tzinfo=<UTC>), 'updated_
+at': datetime.datetime(2017, 8, 17, 5, 33, 56, 153000, tzinfo=<UTC>), 'state': u
+'WA', u'id': 5}, 
+
+{'city': u'New York', 'name': u'CodingDojo New York', 'created_
+at': datetime.datetime(2017, 8, 17, 5, 33, 57, 621000, tzinfo=<UTC>), 'updated_a
+t': datetime.datetime(2017, 8, 17, 5, 33, 57, 621000, tzinfo=<UTC>), 'state': u'
+NY', u'id': 6}]>
+
+>>> from apps.dojo_ninjas.models import Ninja
+
+>>> Ninja.objects.create(first_name="One", last_name="Ninjaone", dojo_id=4)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Two", last_name="Ninjaone", dojo_id=4)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Three", last_name="Ninjaone", dojo_id=4)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Four", last_name="Ninjatwo", dojo_id=5)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Five", last_name="Ninjatwo", dojo_id=5)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Six", last_name="Ninjatwo", dojo_id=5)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Seven", last_name="Ninjathree", dojo_id=6)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Eight", last_name="Ninjathree", dojo_id=6)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.create(first_name="Nine", last_name="Ninjathree", dojo_id=6)
+<Ninja: Ninja object>
+
+>>> Ninja.objects.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>,
+<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Nin
+ja object>, <Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]
+>
+>>> Ninja.objects.all().values()
+<QuerySet [{'first_name': u'One', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 43, 42, 626000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 43, 42, 626000, tzinfo=<UTC>), u'id':1}, 
+
+{'first_name': u'Two', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 49, 34, 959000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 49, 34, 959000, tzinfo=<UTC>), u'id': 2}, 
+
+{'first_name': u'Three', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 49, 44, 837000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 49, 44, 837000, tzinfo=<UTC>), u'id': 3}, 
+
+{'first_name': u'Four', 'last_name': u'Ninjatwo', u'dojo_id': 5, 'created_at': datetime.datetime(2017, 8, 17, 5, 51, 48, 234000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 51, 48, 234000, tzinfo=<UTC>), u'id': 4}, 
+
+{'first_name': u'', 'last_name': u'Ninjatwo', u'dojo_id': 5, 'created_at': datetime.datetime(2017, 8, 17, 5, 51, 54, 748000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 51, 54, 748000, tzinfo=<UTC>), u'id': 5}, 
+
+{'first_name': u'Six', 'last_name': u'Ninjatwo', u'dojo_id': 5, 'created_at': datetime.datetime(2017, 8, 17, 5, 52, 20, 46000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 52, 20, 46000, tzinfo=<UTC>), u'id': 6}, 
+
+{'first_name': u'Five', 'last_name': u'Ninjatwo', u'dojo_id': 5, 'created_at': datetime.datetime(2017, 8, 17, 5,52, 38, 674000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 52, 38, 674000, tzinfo=<UTC>), u'id': 7}, 
+
+{'first_name': u'Seven', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 0, 545000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 0, 546000, tzinfo=<UTC>), u'id': 8}, 
+
+{'first_name': u'Eight', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 13,925000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 13, 925000, tzinfo=<UTC>), u'id': 9}, 
+
+{'first_name': u'Nine', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 23, 845000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 23, 845000, tzinfo=<UTC>), u'id': 10}]>
+
+>>> Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+
+>>> Ninja.objects.first().dojo
+<Dojo: Dojo object>
+
+>>> Dojo.objects.last().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object>
+
+>>> Dojo.objects.first().ninjas.all().values()
+<QuerySet [{'first_name': u'One', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 43, 42, 626000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 43, 42, 626000, tzinfo=<UTC>), u'id':1}, 
+
+{'first_name': u'Two', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 49, 34, 959000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 49, 34, 959000, tzinfo=<UTC>), u'id': 2}, 
+
+{'first_name': u'Three', 'last_name': u'Ninjaone', u'dojo_id': 4, 'created_at': datetime.datetime(2017, 8, 17, 5, 49, 44, 837000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 49, 44, 837000, tzinfo=<UTC>), u'id': 3}]>
+
+>>> Dojo.objects.last().ninjas.all().values()
+<QuerySet [{'first_name': u'Seven', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 0, 545000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 0, 546000, tzinfo=<UTC>), u'id': 8}, 
+
+{'first_name': u'Eight', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 13, 925000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 13, 925000, tzinfo=<UTC>), u'id': 9}, 
+
+{'first_name': u'Nine', 'last_name': u'Ninjathree', u'dojo_id': 6, 'created_at': datetime.datetime(2017, 8, 17, 5, 53, 23, 845000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 53, 23, 845000, tzinfo=<UTC>), u'id': 10}]>
+
+>>> from apps.dojo_ninjas.models import Dojo
+
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object>, <Dojo: Dojo object>, <Dojo: Dojo object>]>
+
+>>> Dojo.objects.all().values()
+<QuerySet [{'city': u'Mountain View', 'name': u'CodingDojo Silcon Valley', 'created_at': datetime.datetime(2017, 8, 17, 5, 33, 51, 934000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 33, 51, 934000, tzinfo=<UTC>), 'state': u'CA', u'id': 4, 'desc': u'1000'}, 
+
+{'city': u'Seattle', 'name': u'CodingDojo Seattle', 'created_at': datetime.datetime(2017, 8, 17, 5, 33, 56, 153000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 33, 56, 153000, tzinfo=<UTC>), 'state': u'WA', u'id': 5, 'desc': u'1000'}, 
+
+{'city': u'New York', 'name': u'CodingDojo New York', 'created_at': datetime.datetime(2017, 8, 17, 5, 33, 57, 621000, tzinfo=<UTC>), 'updated_at': datetime.datetime(2017, 8, 17, 5, 33, 57,621000, tzinfo=<UTC>), 'state': u'NY', u'id': 6, 'desc': u'1000'}]>
