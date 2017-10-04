@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from .models import Review, Author, Book
 from django.shortcuts import render, redirect
@@ -30,11 +29,11 @@ def create(request):
         for e in errs:
             messages.error(request, e)
     else:
-        Review.objects.create_review(request.POST, request.session['user_id'])
-    return redirect('/books')
+        book_id = Review.objects.create_review(request.POST, request.session['user_id']).book.id
+    return redirect('/books/{}'.format(book_id))
 
 def create_additional(request, book_id):
-    print book_id, type(book_id)
+    # print book_id, type(book_id)
     the_book = Book.objects.get(id=book_id)
     new_book_data = {
         'title': the_book.title,

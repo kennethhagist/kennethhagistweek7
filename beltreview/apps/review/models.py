@@ -7,18 +7,19 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
-        return_self.name
+        return self.name
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(Author, related_name="books")
     def __str__(self):
-        return_self.title
+        return self.title
 
-class ReviewManager(models.Model):
+class ReviewManager(models.Manager):
     def validate_review(self, post_data):
         errors = []
-        if len(post_data['title']) < 1 or len(post_data['reivew']) < 1:
+
+        if len(post_data['title']) < 1 or len(post_data['review']) < 1:
             errors.append('fields are required')
         if not "author" in post_data and len(post_data['new_author']) < 3:
             errors.append('new author names must 3 or more charaters')
@@ -43,7 +44,8 @@ class ReviewManager(models.Model):
             )
         else:
             the_book = Book.objects.get(title=clean_data['title'])
-        self_create(
+
+        return self.create(
             review = clean_data['review'],
             rating = clean_data['rating'],
             book = the_book,
@@ -55,7 +57,7 @@ class ReviewManager(models.Model):
 
 class Review(models.Model):
     review = models.TextField()
-    ratings = models.IntegerField()
+    rating = models.IntegerField()
     book = models.ForeignKey(Book, related_name="reviews")
     reviewer = models.ForeignKey(User, related_name="reviews_left")
     created_at = models.DateTimeField(auto_now_add=True)
